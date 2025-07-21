@@ -1,4 +1,4 @@
-ARG BUILD_FROM=hassioaddons/base:edge
+ARG BUILD_FROM=ghcr.io/home-assistant/${BUILD_ARCH}-base:latest
 FROM ${BUILD_FROM}
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
