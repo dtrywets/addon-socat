@@ -1,6 +1,5 @@
 {
   "name": "Simple Socat Add-on repository",
-  "version": "0.0.2",
   "url": "https://github.com/dtrywets/addon-socat",
   "maintainer": "dtrywets",
   "addons": ["socat-addon"]
