@@ -1,9 +1,10 @@
 #!/usr/bin/with-contenv bash
 set -e
 
-REMOTE_HOST=${REMOTE_HOST:-192.168.20.20}
-REMOTE_PORT=${REMOTE_PORT:-2004}
-DEVICE_LINK=${DEVICE_LINK:-/dev/ttyWMA0}
+# Optionen aus /data/options.json lesen
+REMOTE_HOST=$(jq -r '.remote_host // "192.168.20.20"' /data/options.json)
+REMOTE_PORT=$(jq -r '.remote_port // 2004' /data/options.json)
+DEVICE_LINK=$(jq -r '.device_link // "/dev/ttyWMA0"' /data/options.json)
 
 echo "Starte socat: $REMOTE_HOST:$REMOTE_PORT <-> $DEVICE_LINK"
 socat PTY,link=$DEVICE_LINK,raw TCP:$REMOTE_HOST:$REMOTE_PORT
