@@ -1,6 +1,6 @@
 {
   "name": "Socat Proxy",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "slug": "socat-addon",
   "description": "Exposes socat to create virtual serial devices",
   "arch": ["aarch64", "amd64", "armv7", "i386"],

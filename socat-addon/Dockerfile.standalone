@@ -1,0 +1,20 @@
+# Minimalistischer Alpine-Container mit socat
+FROM alpine:3.19
+
+RUN apk add --no-cache socat bash jq
+
+WORKDIR /app
+
+# Socat-Runskript kopieren
+COPY rootfs/etc/services.d/socat/socat-run.sh /app/socat-run.sh
+
+# Standard-Umgebungsvariablen setzen
+ENV REMOTE_HOST=192.168.20.20
+ENV REMOTE_PORT=2004
+ENV DEVICE_LINK=/dev/ttyWMA0
+
+# Ausführbar machen
+RUN chmod +x /app/socat-run.sh
+
+# Default command: unser run-Skript
+CMD ["/app/socat-run.sh"]
