@@ -9,6 +9,3 @@ RUN apk add --no-cache socat
 
 # Copy s6 overlay services (run & finish)
 COPY rootfs/etc /etc
-
-# Use the s6-overlay init system as PID 1
-ENTRYPOINT ["/init"]
