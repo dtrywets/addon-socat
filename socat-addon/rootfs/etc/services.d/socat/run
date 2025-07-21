@@ -1,9 +1,8 @@
-#!/usr/bin/with-contenv bash
+#!/usr/bin/with-contenv sh
+echo "Starte socat mit: $REMOTE_HOST:$REMOTE_PORT <-> $DEVICE_LINK" > /data/debug.txt
 set -ex
-
-echo "Starte socat mit: $REMOTE_HOST:$REMOTE_PORT <-> $DEVICE_LINK"
-env
-ls -l /dev
+env >> /data/debug.txt
+ls -l /dev >> /data/debug.txt
 
 # Optionen aus /data/options.json lesen
 REMOTE_HOST=$(jq -r '.remote_host // "192.168.20.20"' /data/options.json)
