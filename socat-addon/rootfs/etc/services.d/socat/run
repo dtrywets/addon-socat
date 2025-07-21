@@ -1,7 +1,9 @@
-#!/usr/bin/execlineb -P
-# Retrieve options
-with-shell:
-  DEVICE=${DEVICE_LINK:-/dev/ttyWMA0}
-  HOST=${REMOTE_HOST:-127.0.0.1}
-  PORT=${REMOTE_PORT:-2004}
-  exec socat -d -d PTY,link="$DEVICE",raw TCP:${HOST}:${PORT}
+#!/usr/bin/with-contenv bash
+set -e
+
+REMOTE_HOST=${REMOTE_HOST:-192.168.20.20}
+REMOTE_PORT=${REMOTE_PORT:-2004}
+DEVICE_LINK=${DEVICE_LINK:-/dev/ttyWMA0}
+
+echo "Starte socat: $REMOTE_HOST:$REMOTE_PORT <-> $DEVICE_LINK"
+socat PTY,link=$DEVICE_LINK,raw TCP:$REMOTE_HOST:$REMOTE_PORT
