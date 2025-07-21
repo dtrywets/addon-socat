@@ -1,0 +1,7 @@
+#!/usr/bin/execlineb -P
+# Retrieve options
+with-shell:
+  DEVICE=${DEVICE_LINK:-/dev/ttyWMA0}
+  HOST=${REMOTE_HOST:-127.0.0.1}
+  PORT=${REMOTE_PORT:-2004}
+  exec socat -d -d PTY,link="$DEVICE",raw TCP:${HOST}:${PORT}
